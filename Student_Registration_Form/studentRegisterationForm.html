@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Registration Form</title>
+</head>
+<style>
+    .form{
+        border:1px solid #ff3505;
+        border-radius: 5px;
+        margin-top:3%;
+        width:50%;
+        padding:10px;
+        text-align:center;
+        font-size:17px;
+        font-weight: 800;
+        background-color: rgb(178, 228, 211);
+        /* display: flex;
+        flex-direction: column; */
+        margin-left:23%;
+        /* margin-right:50%; */
+    }
+   .studentTable{
+
+    border:1px solid;
+   }
+   .cus-btn{
+    background-color: red;
+    border:none;
+    border-radius:5px;
+    color:#f7e1dc
+   }
+   table thead tr th{
+    border:1px solid #ff3505;
+    background-color: rgb(170, 231, 211);
+    /* width:100%; */
+   }
+   table tbody tr td{
+    border:1px solid #461104;
+    text-align: center;
+    padding:3px;
+    background-color: #f7e1dc;
+   }
+   table{
+    width:100%;
+    border:1px solid #461104;
+    margin-top:30px;
+   }
+   .custom-btn{
+    color:#ffffff;
+    background-color: rgb(6, 82, 82);
+    border:none;
+    border-radius:5px;
+    width:60px;
+    height:30px;
+
+   }
+   body {
+	background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+	background-size: 400% 400%;
+	-webkit-animation: gradient 15s ease infinite;
+	        animation: gradient 15s ease infinite;
+	height: 100vh;
+}
+
+@-webkit-keyframes gradient {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}
+
+@keyframes gradient {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}
+</style>
+<body>
+    <form id="studentForm" class="form">
+        <label>Name:</label>
+        <input type="text"  id="username"/><br><br>
+
+        <label>Age:</label>
+        <input type="number"  id="Age"/><br><br>
+
+        <label >Gender:</label>
+        <select id="Gender">
+            <option>Male</option>
+            <option>Female</option>
+            <option>Others</option>
+        </select>
+           <br><br>
+                
+        <label>Course:</label>
+        <!-- <input type="number"  id="Age"/> -->
+        <select id="Course">
+            <option>js</option>
+            <option>css</option>
+            <optio>html</optio>
+        </select><br><br>
+
+        <label>Email:</label>
+        <input type="email"  id="Email"/><br><br>
+
+
+        
+
+        <button type="button" class="custom-btn" onclick="save()">Save</button>
+
+
+
+    </form>
+
+    <table class="studentTable">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Age</th>
+                <th>Gender</th>
+                <th>Course</th>
+                <th>Email</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody id="studentList">
+             
+        </tbody>  
+    </table>
+</body>
+<script src="script.js"></script>
+</html>
+
+<script>
+
+    function save(){
+    var username=document.getElementById("username").value
+    var age=document.getElementById("Age").value
+    var gender=document.getElementById("Gender").value
+    var course=document.getElementById("Course").value
+    var email=document.getElementById("Email").value
+
+    const studentdata={
+        Name:username,
+        Age:age,
+        Gender:gender,
+        Course:course,
+        Email:email,
+    }
+
+    //creting a table row
+
+    var tablerow=document.getElementById("studentList")
+    var newrow=tablerow.insertRow()
+    var usernamecell=newrow.insertCell(0)
+    var agecell=newrow.insertCell(1)
+    var gendercell=newrow.insertCell(2)
+    var coursecell=newrow.insertCell(3)
+    var emailcell=newrow.insertCell(4)
+    var deletecell=newrow.insertCell(5)
+
+    usernamecell.innerHTML=studentdata.Name
+    agecell.innerHTML=studentdata.Age
+    gendercell.innerHTML=studentdata.Gender
+    coursecell.innerHTML=studentdata.Course
+    emailcell.innerHTML=studentdata.Email
+    deletecell.innerHTML="<button class='cus-btn' onclick='deleteRow(event)'>Delete</button>"
+    
+
+
+
+    // console.log(studentdata.Age)
+
+    // reseting the form
+
+    document.getElementById("studentForm").reset()
+}
+function deleteRow(event){
+    event.target.parentElement.parentElement.remove()
+}
+// function deleteRow(button) {
+//   // Get the row that contains the clicked button
+//   var row = button.parentNode.parentNode;
+// //   console.log(row)
+
+//   // Remove the row from the table
+//   row.parentNode.removeChild(row);
+// }
+
+
+</script>
