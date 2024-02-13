@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TODO List</title>
+      <!-- Bootstrap CSS -->
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+<style>
+    *{
+        list-style:none;
+    }
+    .input-area{
+        padding-top:20px;
+    }
+    .list-area{
+        padding-top:20px;
+    }
+    .todo{
+        border:1px solid 	#92b3d1;
+        border-radius:5px;
+        width:40%;
+        padding:20px;
+        display:flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        margin-top:2%;
+        background-color:#deedf9;
+        box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+
+    }
+    .heading{
+        text-align: center;
+        color:#ffffff;
+        margin-top:10%
+    }
+    .custom-btn{
+        background-color: #92b3d1;
+        color:black;
+        border-radius: 5px;
+        border:none;
+        width:auto;
+    }
+    .custom-btn:focus{
+        border:none;
+        outline:none;
+    }
+    
+    body {
+	background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+	background-size: 400% 400%;
+	-webkit-animation: gradient 15s ease infinite;
+	        animation: gradient 15s ease infinite;
+	height: 100vh;
+}
+
+@-webkit-keyframes gradient {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}
+
+@keyframes gradient {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}
+</style>
+<body>
+    <h2 class="heading">ToDo List</h2>
+    <div class="col-md-12 todo mx-auto" >
+    <div class="input-area">
+     <input type="text" id="input"></input>
+     <button class="custom-btn" onclick="add()">Add</button>
+    </div>
+    <div class="list-area" >
+        <ul id="list" style="padding-top:20px;">
+            <li >hello
+            <button class="custom-btn" onclick="del(event)" >Delete</button>
+            </li>
+        </ul>
+    </div>
+</div>
+
+</body>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</html>
+<script>
+    var input=document.getElementById("input")
+    var list=document.getElementById("list")
+
+    function add(){
+        var inputvalue=input.value;
+        // console.log(inputvalue)
+        var listitem=document.createElement("li")
+        listitem.innerHTML=inputvalue + " <button class='custom-btn' style='margin-top:5px;'onclick='del(event)'>Delete</button>"
+        list.append(listitem)
+    }
+
+    function del(event){
+
+        event.target.parentElement.remove()
+
+    }
+</script>
